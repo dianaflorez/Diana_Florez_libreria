@@ -1,9 +1,7 @@
 def call(boolean abortOnQualityGate = false, boolean abortPipeline = false) {
     echo "Ejecución de las pruebas de calidad de código"
     
-    withSonarQubeEnv('SonarQube') {
-        sh 'echo "Simulando ejecución de análisis estático..."'
-    }
+    
     
     timeout(time: 5, unit: 'MINUTES') {
         echo "Simulación de evaluación del Quality Gate"
