@@ -1,7 +1,4 @@
-def call(){
-    echo "Hello World"
-}
-// def call(boolean abortOnQualityGate = false, boolean abortPipeline = false) {
+def call(boolean abortOnQualityGate = false, boolean abortPipeline = false) {
 //     echo "Ejecución de las pruebas de calidad de código"
     
     
@@ -22,4 +19,4 @@ def call(){
 //     // }
     
 //     echo "Análisis de código completado correctamente."
-// }
+}
