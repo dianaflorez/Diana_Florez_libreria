@@ -1,5 +1,5 @@
 def call(boolean abortOnQualityGate = false, boolean abortPipeline = false) {
-//     echo "Ejecución de las pruebas de calidad de código"
+    echo "Ejecución de las pruebas de calidad de código"
     
     
     
