@@ -1,23 +1,26 @@
 def call(boolean abortOnQualityGate = false, boolean abortPipeline = false) {
+
+    def branchName = env.BRANCH_NAME ?: 'unknown'
+
+    if (abortPipeline || branchName == 'master' || branchName.startsWith('hotfix')) {
+        echo "Branch: ${branchName}. Aborting pipeline due to branch rules."
+        error("Pipeline aborted due to branch rules.")
+    }
+
     echo "Ejecución de las pruebas de calidad de código"
-   
-    // withSonarQubeEnv('SonarQube') {
-        sh 'echo "Simulando ejecución de análisis estático..."'
-    // }
-    
+
+    sh 'echo "Ejecución de las pruebas de calidad de código"'
+
     timeout(time: 5, unit: 'MINUTES') {
-        echo "Simulación de evaluación del Quality Gate"
-        
-        if (abortOnQualityGate) {
-            echo "Quality Gate ha fallado. Abortando pipeline..."
-            error("Pipeline abortado debido a fallo en Quality Gate.")
-        }
+        // Aquí iría la llamada a SonarQube, pero en este caso simulamos la ejecución
+        sh 'echo "Esperando el resultado del análisis estático"'
     }
-    
-    if (abortPipeline) {
-        echo "Abortando pipeline según la configuración..."
-        // error("Pipeline abortado manualmente según el parámetro.")
+
+    if (abortOnQualityGate) {
+        echo "Quality Gate failed. Aborting pipeline."
+        error("Quality Gate failed. Pipeline aborted.")
+    } else {
+        echo "Quality Gate passed. Continuing pipeline."
     }
-    
-    echo "Análisis de código completado correctamente."
+
 }
