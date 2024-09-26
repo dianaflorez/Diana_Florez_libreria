@@ -11,10 +11,10 @@ def call(boolean abortOnQualityGate = false, boolean abortPipeline = false) {
         }
     }
     
-    // if (abortPipeline) {
-    //     echo "Abortando pipeline según la configuración..."
-    //     error("Pipeline abortado manualmente según el parámetro.")
-    // }
+    if (abortPipeline) {
+        echo "Abortando pipeline según la configuración..."
+        error("Pipeline abortado manualmente según el parámetro.")
+    }
     
     echo "Análisis de código completado correctamente."
 }
